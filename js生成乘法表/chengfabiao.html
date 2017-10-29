@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            table {
+                border: none;
+                border-collapse: collapse;
+            }
+            tr:hover td {
+                background: #ffe8d1;
+                color: rgb(192, 142, 192);
+            }
+            td:hover {
+                background: #ffc080 !important;
+                color: #fff !important;
+            }
+            table td {
+                border: none;
+                padding: 15px;
+                text-align: center;
+                background: #d1e8ff;
+                color: #5387bb;
+                box-shadow: 2px 1px 5px #000;
+                font-size: 18px;
+                font-family: arial;
+                font-weight: lighter;
+                transition: 0.3s;
+            }
+            html, body {
+                height: 100%;
+                min-height: 200px;
+                overflow: hidden;
+            }
+            div.content {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="content">
+            <table id="mult"></table>
+        </div>
+        <script>
+            (function createMultTable() {
+                var multTable = document.getElementById("mult");
+                for(let i = 1; i <= 9; i++) {
+                    var col = document.createElement('tr');
+                    for(let j = 1; j <= i; j++) {
+                        var text = document.createTextNode(i + '×' + j + '=' + i * j);
+                        var td = document.createElement("td");
+                        td.appendChild(text);
+                        col.appendChild(td);
+                    }
+                    multTable.appendChild(col);
+                }
+            })();
+            (function() {
+                var judgeZhiShu = function(num) {
+                    for(let i = 2; i < num; i++) {
+                        if(num % i == 0)
+                            return false;
+                    }
+                    return true;
+                }
+                for(let i = 2; i <= 200; i++) {
+                	var flag = true;
+					if(judgeZhiShu(i))
+						console.log(i);
+                }
+            })();
+        </script>
+    </body>
+
+</html>
