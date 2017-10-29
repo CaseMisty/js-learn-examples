@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>???</title>
+    <style>
+        #move{
+            position:absolute;
+            width: 304px;
+            height:240px;
+            background-image: url(nico.jpg);
+        }
+    </style>
+</head>
+<body>
+<div id="move"></div>
+<script>
+	var move = function(){
+	    var elem = document.getElementById("move");
+	    elem.style.top = "0px";
+	    elem.style.left = "0px";
+	    var elem_width = elem.st
+	    var xSpeed = 1, ySpeed = 1;
+	    var win_width = window.innerWidth;
+	    var win_height = window.innerHeight;
+	    var elem_width = parseFloat(getStyle(elem, "width"));
+	    var elem_height = parseFloat(getStyle(elem, "height"));
+	    window.onresize = function(){
+	    	win_width = window.innerWidth;
+	    	win_height = window.innerHeight;
+	    }
+	    setInterval(function(){
+	        elem.style.left = parseInt(elem.style.left) + xSpeed + "px";
+	        elem.style.top = parseInt(elem.style.top) + ySpeed + "px";
+	        //x轴的移动速度在left==窗口宽度-元素宽度，或者是left<0时变为相反数
+	        if(parseInt(elem.style.left)==(win_width-elem_width) || parseInt(elem.style.left)<0){
+	            xSpeed = -xSpeed;
+	        }
+	        if(parseInt(elem.style.top)==(win_height-elem_height) || parseInt(elem.style.top)<0){
+	            ySpeed = -ySpeed;
+	        }
+	        //如果改动窗口时使图片越界，重置图片位置
+	        if(parseInt(elem.style.left)>win_width-elem_width || parseInt(elem.style.top)>win_height-elem_height){
+	        	elem.style.top = "0px";
+				elem.style.left = "0px";
+	        }
+	    },1);
+	}
+	addLodeEvent(move);
+    function addLodeEvent(func){
+    	var oldonload = window.onload;
+    	if(typeof window.onload != "function"){
+    		window.onload = func;
+    	}else{
+    		oldonload();
+    		func();
+    	}
+    }
+    function getStyle(obj,name){
+		if(obj.currentStyle){
+			return obj.currentStyle[name];//IE下获取非行间样式
+		}else{
+			return getComputedStyle(obj,false)[name];//FF、Chorme下获取费行间样式
+		}
+	}
+</script>
+</body>
+</html>

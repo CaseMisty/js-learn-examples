@@ -1,0 +1,23 @@
+body {
+    background: #dde5e8;
+    color: #CACACA;
+}
+#clock {
+    background: #272E38;
+}
+#screen {
+    background: #0f1620;
+}
+.digit span {
+    background: #CACACA;
+}
+.digit span:before, .digit span:after {
+    color: #CACACA;
+}
+div.dots:before, div.dots:after {
+    background: #CACACA;
+}
+#weekdays span, #ampm p {
+    color: #CACACA;
+    opacity: 0.4;
+}

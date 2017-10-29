@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+html{
+    width: 100%;
+    /* min-height: 1200px; */
+}
+body {
+    min-height: 00px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#cal{    
+    width: 100%;
+    height: 600px;
+    border-top: 1px solid;
+    margin-top: 160px;
+}
+#clock {
+	border-radius: 3px;
+    width: 450px;
+    height: 194px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 150px;
+}
+#clock:after {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    content: '';
+    width: 450px;
+    height: 20px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    bottom: 1px;
+    left: 0;
+}
+#screen {
+    border-radius: 5px;
+    width: 370px;
+    height: 114px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    
+}
+#digits {
+    margin: 20px auto;
+    height: 50px;
+    margin-top: 0px;
+}
+div.digit {
+    width: 28px;
+    height: 50px;
+    position: relative;
+    display: inline-block;
+}
+div.digit span {
+    opacity: 0;
+}
+span.stokea {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    height: 5px;
+    left: 6px;
+}
+.a1:before {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    border-width: 5px 5px 0;
+    bottom: 0;
+    left: -5px;
+    border-top-color: inherit;
+}
+.a1:after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    border-width: 5px 5px 0;
+    bottom: 0;
+    right: -5px;
+    border-top-color: inherit;
+}
+.a2 {
+    top: 24px;
+}
+.a2:before {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    border-width: 3px 5px 2px 0;
+    left: -5px;
+    border-right-color: inherit;
+}
+.a2:after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    border-width: 3px 0px 2px 5px;
+    right: -5px;
+    border-left-color: inherit;
+}
+.a3 {
+    top: 48px;
+}
+.a3:before {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    border-width: 0 5px 5px;
+    border-bottom-color: inherit;
+    left: -5px;
+    top: 0;
+}
+.a3:after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    right: -5px;
+    top: 0;
+    border-width: 0 5px 5px;
+    border-bottom-color: inherit;
+}
+span.stokev {
+    display: inline-block;
+    position: absolute;
+    width: 5px;
+    height: 14px;
+}
+.v1 {
+    top: 7px;
+    left: 0;
+}
+.v1:before, .v3:before {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    top: -5px;
+    left: 0;
+    border-width: 5px 0 5px 5px;
+    border-left-color: inherit;
+}
+.v1:after, .v3:after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    bottom: -5px;
+    border-width: 5px 5px 0 0;
+    border-top-color: inherit;
+}
+.v2 {
+    top: 7px;
+    right: 0;
+}
+.v2:before, .v4:before {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    top: -5px;
+    border-width: 0 0 5px 5px;
+    border-bottom-color: inherit;
+}
+.v2:after, .v4:after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+    bottom: -5px;
+    border-width: 5px 0 0 5px;
+    border-top-color: inherit;
+}
+.v3 {
+    top: 32px;
+    left: 0;
+}
+.v4 {
+    top: 32px;
+    right: 0;
+}
+div.dots{
+	width: 5px;
+	height: 50px;
+	position: relative;
+	margin: 0 4px;
+	display: inline-block;
+}
+div.dots:before, div.dots:after{
+	content: '';
+	position: absolute;
+	width: 5px;
+	height: 5px;
+}
+div.dots:before{
+	top: 14px;
+}
+div.dots:after{
+	top: 34px;
+}
+/*从0到9的数字显示*/
+.d0 .a1,.d0 .a3,.d0 .v1,.d0 .v2,.d0 .v3,.d0 .v4{
+	opacity: 1;
+}
+.d1 .v2, .d1 .v4 {
+    opacity: 1;
+}
+.d2 .a1, .d2 .a2, .d2 .a3, .d2 .v2, .d2 .v3 {
+    opacity: 1;
+}
+.d3 .a1, .d3 .a2, .d3 .a3, .d3 .v2, .d3 .v4 {
+    opacity: 1;
+}
+.d4 .a2, .d4 .v1, .d4 .v2, .d4 .v4 {
+    opacity: 1;
+}
+.d5 .a1, .d5 .a2, .d5 .a3, .d5 .v1, .d5 .v4 {
+    opacity: 1;
+}
+.d6 .a1, .d6 .a2, .d6 .a3, .d6 .v1, .d6 .v3, .d6 .v4 {
+    opacity: 1;
+}
+.d7 .a1, .d7 .v2, .d7 .v4 {
+    opacity: 1;
+}
+.d8 .a1, .d8 .a2, .d8 .a3, .d8 .a3, .d8 .v1, .d8 .v2, .d8 .v3, .d8 .v4 {
+    opacity: 1;
+}
+.d9 .a1, .d9 .a2, .d9 .a3, .d9 .v1, .d9 .v2, .d9 .v4 {
+    opacity: 1;
+}
+#weekdays{
+	font-size: 12px;
+	font-family: Arial,sans-serif;
+	width: 82%;
+	padding-top: 10px;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.active{
+	opacity: 1 !important;
+}
+#ampm{
+	font-size: 10px;
+	font-family: Arial,sans-serif;
+	position: absolute;
+	bottom: 23px;
+	right: 20px;
+}
+
+
+#switch-theme{
+	padding: 10px 20px;
+	background: linear-gradient(to bottom,#F7ABB7,#F89EAC);
+	border: 1px solid #F6DBDF;
+	color: #fff;
+	font-family: '等线';
+	position: relative;
+	border-radius: 2px;
+	top: 30px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+#switch-theme:hover{
+	background: linear-gradient(to bottom,#F89EAC, #F5B4BE);
+}

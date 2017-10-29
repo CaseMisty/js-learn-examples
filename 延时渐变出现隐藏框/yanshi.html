@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            #container {
+                width: 600px;
+                height: 220px;
+                position: relative;
+            }
+            #container div {
+                float: left;
+            }
+            #box {
+                width: 150px;
+                height: 220px;
+                margin-right: 5px;
+            }
+            #box img {
+                width: 150px;
+                height: 220px;
+            }
+            #content {
+                width: 240px;
+                height: 220px;
+                opacity: 0;
+                transition: all 0.3s;
+                position: absolute;
+                left: 150px;
+                display: none;
+                /*z-index: -1;*/
+            }
+            #content img {
+                width: 240px;
+                height: 220px;
+            }
+            .other {
+                /* border: 1px solid; */
+                width: 230px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+        	<div id="section">
+        		<div id="box"><img src="images/dy.jpg"></div>
+        		<div id="content"><img src="images/dydg.png"></div>
+        		
+        	</div>
+            <div class="other">这里显示其他内容.<br> hover左侧的图片, 右侧图片出现后, 如果鼠标离开又经过这两张图片, 则取消隐藏过程.</div>
+        </div>
+        <script>
+            var box = document.querySelector("#box");
+            var con = document.querySelector("#content");
+            var sec = document.querySelector("#section");
+            var hideHandle = null;
+
+			sec.addEventListener('mouseover', showDis, false);
+			sec.addEventListener('mouseout', hideDis, false);
+
+            function showZ() {
+                clearTimeout(hideHandle);
+                con.style.zIndex = 1;
+                con.style.opacity = '1';
+            }
+            function showDis() {
+                clearTimeout(hideHandle);
+                con.style.display = 'block';
+                setTimeout(function() {con.style.opacity = 1;});
+            }
+
+            function hideZ() {
+                hideHandle = setTimeout(function() {
+                    con.style.opacity = '0';
+                    setTimeout(function() {
+                        con.style.zIndex = -1;
+                    }, getTransitionDuration(con) * 1000);
+                }, 500);
+            }
+            function hideDis() {
+                hideHandle = setTimeout(function() {
+                    con.style.opacity = '0';
+                    setTimeout(function() {
+  	                	con.style.display = 'none';
+                    }, getTransitionDuration(con) * 1000);
+                }, 500);
+            }
+            /**
+             * 获取transition的时间长度
+             * 
+             * @param {Object} ele
+             * @return {number}
+             */
+            function getTransitionDuration(ele) {
+                return parseFloat(getComputedStyle(ele).transitionDuration);
+            }
+        </script>
+    </body>
+
+</html>

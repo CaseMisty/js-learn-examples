@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>收缩菜单</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				box-sizing: border-box;
+				transition: 1s;
+				font-family: '等线';
+			}
+			ul {
+				list-style: none;
+			}
+			#accordion {
+				background: #1783B0;
+				color: #fff;
+				border: 1px solid #1783B0;
+				width: 150px;
+			}
+			#accordion>li {
+				position: relative;
+			}
+			#accordion p.lih {
+				padding: 5px 10px;
+				width: 100%;
+			}
+			#accordion p.lih:hover {
+				background: #016789;
+			}
+			#accordion ul li {
+				padding: 20px 30px;
+				font-size: 0.8;
+				height: 60px;
+			}
+			#accordion ul {
+				background: #fff;
+				color: #1783B0;
+				height: 0px;
+			}
+			.accli{
+				cursor: pointer;
+			}
+			.jiantou {
+				border: 1px solid transparent;
+				border-width: 10px 7px 0;
+				border-top-color: #fff;
+				position: absolute;
+				right: 15px;
+				top: 8px;
+				transition:1s;
+				position: absolute;
+			}
+			.rotate-90deg {
+				transform: rotate(-90deg);
+				-webkit-transform: rotate(-90deg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id='accordion'>
+			<li>
+				<div class="accli">
+					<p class="lih">详细信息</p>
+					<p class='jiantou'></p>
+				</div>
+				<ul>
+					<li>我的电脑</li>
+					<li>我的文档</li>
+					<li>网上邻居</li>
+					<li>回收站</li>
+				</ul>
+			</li>
+			<li>
+				<div class="accli">
+					<p class="lih">个人收藏</p>
+					<p class='jiantou'></p>
+				</div>
+				<ul>
+					<li>应用程序</li>
+					<li>桌面</li>
+					<li>文稿</li>
+					<li>下载</li>
+				</ul>
+			</li>
+			<li>
+				<div class="accli">
+					<p class="lih">设备 </p>
+					<p class='jiantou'></p>
+				</div>
+				<ul>
+					<li>远程光盘</li>
+					<li>Drive</li>
+					<li>AirDrop</li>
+					<li>所有文件</li>
+				</ul>
+			</li>
+			<li>
+				<div class="accli">
+					<p class="lih">？？？</p>
+					<p class='jiantou'></p>
+				</div>
+				<ul>
+					<li>远程光盘</li>
+					<li>Drive</li>
+					<li>AirDrop</li>
+					<li>所有文件</li>
+				</ul>
+			</li>
+		</ul>
+		<br />
+		<span class="jiantou"></span>
+		<script src="operateClass.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var accordionUl = document.querySelectorAll("#accordion ul");
+			var btns = document.querySelectorAll("#accordion div.accli");
+			var jiantou = document.querySelectorAll("p.jiantou");
+			for (var i = 0; i < btns.length; i++) {
+				btns[i].addEventListener('click', (function(i) {
+					return function() {
+						for (var j = 0; j < accordionUl.length; j++) {
+							if (i === j && !parseInt(accordionUl[j].style.height)) {
+								var innerLiHeight = parseInt(getComputedStyle(accordionUl[j].children[0]).height);
+								accordionUl[j].style.height = accordionUl[j].childElementCount * innerLiHeight + 'px';
+//accordionUl[j].style.height = '1000px';
+								addClass(jiantou[j], 'rotate-90deg');
+							} else {
+								accordionUl[j].style.height = 0;
+								removeClass(jiantou[j], 'rotate-90deg');
+							}
+						}
+					}
+				})(i), false);
+			}
+		</script>
+	</body>
+
+</html>
